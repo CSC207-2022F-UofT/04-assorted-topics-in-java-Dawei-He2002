@@ -31,7 +31,12 @@ public class DrivableTrader extends Trader{
     @Override
     public int getSellingPrice(Object obj){
         if(obj instanceof Drivable){
-            return (((Drivable) obj).getMaxSpeed() + ((Tradable) obj).getPrice());
+            if(obj instanceof Tradable) {
+                return (((Drivable) obj).getMaxSpeed() + ((Tradable) obj).getPrice());
+            }
+            else{
+                return super.getSellingPrice(obj);
+            }
         }
         else{
             return super.getSellingPrice(obj);
